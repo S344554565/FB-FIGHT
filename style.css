@@ -1,0 +1,119 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Georgia', serif; }
+
+body {
+    background: url('https://wallpapercave.com/wp/wp12529321.jpg') no-repeat center center/cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 20px 0;
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    padding: 30px 25px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 380px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(255, 0, 200, 0.4);
+}
+
+h2 { margin-bottom: 15px; font-size: 20px; }
+
+label {
+    display: block;
+    text-align: left;
+    margin: 12px 0 5px;
+    font-size: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #fff;
+    background: transparent;
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+input::placeholder { color: #ccc; }
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    font-family: 'Georgia', serif;
+}
+
+.run-btn { background: #1a73e8; }
+.run-btn:hover { background: #0d5bcd; }
+
+.stop-btn { background: #e53935; }
+.stop-btn:hover { background: #c62828; }
+
+#status {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #00ff88;
+    word-break: break-all;
+}
+
+/* Footer Styles */
+.footer {
+    margin-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 15px;
+}
+
+.copyright {
+    font-size: 11px;
+    color: #bbb;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.copyright b {
+    color: #fff;
+}
+
+.owner-name {
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    color: #c0c0c0;
+    text-shadow: 0 0 8px rgba(255, 0, 200, 0.6);
+    letter-spacing: 1px;
+    margin: 8px 0;
+}
+
+.fb-link {
+    display: block;
+    font-size: 12px;
+    color: #4a9eff;
+    text-decoration: underline;
+    word-break: break-all;
+    margin: 8px 0;
+}
+
+.wa-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #25D366;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.wa-link:hover {
+    text-decoration: underline;
+}
