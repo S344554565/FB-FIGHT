@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messenger - MR SURAJ X INSIDER</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Messenger</h2>
+
+        <label>Enter Your Hater Name</label>
+        <input type="text" id="haterName" placeholder="Enter name">
+
+        <label>Enter Time (seconds)</label>
+        <input type="number" id="timeInput" placeholder="Enter time" value="10">
+
+        <label>Choose Your File</label>
+        <input type="file" id="fileInput">
+
+        <button class="run-btn" onclick="startTask()">Run</button>
+
+        <label>Enter Task ID to Stop</label>
+        <input type="text" id="taskIdInput" placeholder="Task ID">
+
+        <button class="stop-btn" onclick="stopTask()">Stop</button>
+
+        <p id="status"></p>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <p class="copyright">© 2025 DEVELOPED BY <b>MR SURAJ X INSIDER</b></p>
+            <p class="owner-name">MR SURAJ X INSIDER</p>
+            <a href="https://www.facebook.com/share/1H3oiE38YU/" target="_blank" class="fb-link">
+                https://www.facebook.com/share/1H3oiE38YU/
+            </a>
+            <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="wa-link">
+                💬 Chat on WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <script>
+        async function startTask() {
+            const name = document.getElementById("haterName").value;
+            const time = document.getElementById("timeInput").value;
+            const file = document.getElementById("fileInput").files[0];
+
+            if (!name || !time) {
+                alert("Name aur Time dono bharein!");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("hater_name", name);
+            formData.append("time", time);
+            if (file) formData.append("file", file);
+
+            const res = await fetch("/run", { method: "POST", body: formData });
+            const data = await res.json();
+
+            if (data.task_id) {
+                document.getElementById("status").innerText =
+                    "✅ Task Started! Your Task ID: " + data.task_id;
+                document.getElementById("taskIdInput").value = data.task_id;
+            } else {
+                document.getElementById("status").innerText = "❌ " + data.error;
+            }
+        }
+
+        async function stopTask() {
+            const taskId = document.getElementById("taskIdInput").value;
+            if (!taskId) { alert("Task ID daalein!"); return; }
+
+            const formData = new FormData();
+            formData.append("task_id", taskId);
+
+            const res = await fetch("/stop", { method: "POST", body: formData });
+            const data = await res.json();
+            document.getElementById("status").innerText = data.message || data.error;
+        }
+    </script>
+</body>
+</html>
